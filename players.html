@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Intramurals | Roster</title>
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
+    <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+    <style>
+        :root { --gold: #FFD700; }
+        body { margin: 0; background: #000; color: white; font-family: 'Segoe UI', sans-serif; display: flex; flex-direction: column; align-items: center; min-height: 100vh; overflow: hidden; }
+        #bg-video { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; filter: brightness(0.3); }
+        nav { width: 100%; background: rgba(0,0,0,0.9); padding: 15px 40px; border-bottom: 2px solid var(--gold); display: flex; justify-content: space-between; align-items: center; box-sizing: border-box; }
+        .nav-title { font-weight: 800; color: var(--gold); letter-spacing: 1px; }
+        .nav-links a { color: white; text-decoration: none; margin-left: 25px; font-size: 0.9rem; font-weight: bold; text-transform: uppercase; }
+        .card { background: rgba(15, 15, 15, 0.85); padding: 40px; border-radius: 8px; border-top: 5px solid var(--gold); width: 450px; margin-top: 30px; text-align: center; }
+        #player-list { margin-top: 20px; text-align: left; background: rgba(0,0,0,0.5); max-height: 350px; overflow-y: auto; border: 1px solid #333; }
+        button { width: 100%; padding: 15px; background: var(--gold); border: none; font-weight: 900; cursor: pointer; text-transform: uppercase; }
+    </style>
+</head>
+<body>
+    <video autoplay muted loop playsinline id="bg-video"><source src="background.mp4" type="video/mp4"></video>
+    <nav>
+        <div class="nav-title">Intramurals SY 2025-2026</div>
+        <div class="nav-links">
+            <a href="index.html">Sign Up</a>
+            <a href="teams.html">Team Checker</a>
+            <a href="players.html">Roster</a>
+        </div>
+    </nav>
+    <div class="card">
+        <h2 style="color: var(--gold);">OFFICIAL ROSTER</h2>
+        <button py-click="display_players">Show Classmates</button>
+        <div id="player-list"></div>
+    </div>
+    <py-config>
+        [[fetch]]
+        files = ["main.py"]
+    </py-config>
+    <script type="py" src="main.py"></script>
+</body>
+</html>

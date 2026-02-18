@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Intramurals | Team Checker</title>
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
+    <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+    <style>
+        :root { --gold: #FFD700; }
+        body { margin: 0; background: #000; color: white; font-family: 'Segoe UI', sans-serif; display: flex; flex-direction: column; align-items: center; min-height: 100vh; overflow: hidden; }
+        #bg-video { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; filter: brightness(0.3); }
+        nav { width: 100%; background: rgba(0,0,0,0.9); padding: 15px 40px; border-bottom: 2px solid var(--gold); display: flex; justify-content: space-between; align-items: center; box-sizing: border-box; }
+        .nav-title { font-weight: 800; color: var(--gold); letter-spacing: 1px; }
+        .nav-links a { color: white; text-decoration: none; margin-left: 25px; font-size: 0.9rem; font-weight: bold; text-transform: uppercase; }
+        .card { background: rgba(15, 15, 15, 0.85); padding: 40px; border-radius: 8px; border-top: 5px solid var(--gold); width: 380px; margin-top: 40px; text-align: center; }
+        select { width: 100%; padding: 10px; margin: 8px 0; background: #222; color: white; border: 1px solid #444; border-radius: 4px; }
+        button { width: 100%; padding: 15px; background: var(--gold); border: none; font-weight: 900; cursor: pointer; }
+        #team-img { max-width: 140px; display: none; margin: 15px auto; border-radius: 8px; }
+    </style>
+</head>
+<body>
+    <video autoplay muted loop playsinline id="bg-video"><source src="background.mp4" type="video/mp4"></video>
+    <nav>
+        <div class="nav-title">Intramurals SY 2025-2026</div>
+        <div class="nav-links">
+            <a href="index.html">Sign Up</a>
+            <a href="teams.html">Team Checker</a>
+            <a href="players.html">Roster</a>
+        </div>
+    </nav>
+    <div class="card">
+        <h2 style="color: var(--gold);">TEAM CHECKER</h2>
+        <div style="text-align: left; margin-bottom: 15px; font-size: 0.85rem;">
+            <label><input type="radio" name="reg" id="reg_yes"> Registered Online</label><br>
+            <label><input type="radio" name="med" id="med_yes"> Medical Clearance Secured</label>
+        </div>
+        <select id="grade"><option value="">Grade Level</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select>
+        <select id="section"><option value="">Section</option><option value="Emerald">Emerald</option><option value="Ruby">Ruby</option><option value="Topaz">Topaz</option><option value="Sapphire">Sapphire</option></select>
+        <button py-click="check_status">CHECK ASSIGNMENT</button>
+        <div id="status-msg" style="margin-top:20px; font-weight: bold;"></div>
+        <img id="team-img" src="">
+    </div>
+    <py-config>
+        [[fetch]]
+        files = ["main.py"]
+    </py-config>
+    <script type="py" src="main.py"></script>
+</body>
+</html>
