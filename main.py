@@ -31,22 +31,29 @@ classmates = [
 
 # --- SKILLS TEST LOGIC ---
 def verify_account(event):
+    # Defining Variables
     username = document.querySelector("#user_input").value
     password = document.querySelector("#pass_input").value
     log = document.querySelector("#feedback-log")
+    success_card = document.querySelector("#success-card")
+    # If-Else Statements
     issues = []
     if len(username) < 7: issues.append("Username requires at least 7 characters.")
     if len(password) < 10: issues.append("Password requires at least 10 characters.")
     if not any(c.isalpha() for c in password): issues.append("Password requires at least one letter.")
     if not any(c.isdigit() for c in password): issues.append("Password requires at least one number.")
     
+    # Display if the login is successful or not
     if not issues:
         log.innerHTML = '<span style="color:#FFD700; font-weight:bold;">SUCCESS: ACCOUNT CREATED</span>'
+        success_card.style.display = "block"
     else:
         log.innerHTML = f'<span style="color:#ff4d4d; font-weight:bold;">{"<br>".join(issues)}</span>'
+    
 
 # --- SEATWORK 2 LOGIC ---
 def check_status(event):
+    # Defining Variables
     is_reg = document.querySelector("#reg_yes").checked
     is_med = document.querySelector("#med_yes").checked
     grade = document.querySelector("#grade").value
@@ -54,17 +61,22 @@ def check_status(event):
     msg = document.querySelector("#status-msg")
     pic = document.querySelector("#team-img")
     
+    # If-Else Statements
     pic.style.display = "none"
     if not is_reg:
+        # Not Registered Online
         msg.innerText = "INSTRUCTION: Please register online first."
         msg.style.color = "#ff4d4d"
     elif not is_med:
+        # No Medical Clearance
         msg.innerText = "INSTRUCTION: Please secure a medical clearance."
         msg.style.color = "#ff4d4d"
     elif not grade or not section:
+        # No Grade or Section Selected
         msg.innerText = "INSTRUCTION: Select Grade and Section."
         msg.style.color = "#ff4d4d"
     else:
+        # Successful Result
         team = ASSIGNMENTS.get(f"{grade}-{section}")
         msg.innerHTML = f"<span style='color: #FFD700;'>CONGRATULATIONS!</span><br>You are a {team}."
         msg.style.color = "white"
